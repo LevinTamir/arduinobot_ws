@@ -12,7 +12,7 @@ class SimpleServiceClient(Node):
 
         while not self.client_.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("service not available, waiting again...")
-
+        
         self.req_ = AddTwoInts.Request()
         self.req_.a = a
         self.req_.b = b
@@ -20,7 +20,7 @@ class SimpleServiceClient(Node):
         self.future_.add_done_callback(self.responseCallback)
 
     def responseCallback(self, future):
-        self.get_logger().info("Service Response %d" % future.result().sum)
+        self.get_logger().info('Service Response %d' % future.result().sum)        
 
 
 def main():
@@ -38,5 +38,5 @@ def main():
     rclpy.shutdown()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
